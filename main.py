@@ -8,12 +8,13 @@ def play():
     for row in file:
         words.append(row.strip())
 
+    file.close()
+
     print(words)
 
     position = random.randrange(0, len(words))
     secret_word = words[position].upper()
-
-    status = ["_", "_", "_", "_", "_", "_"]
+    status = ["_" for i in secret_word]
 
     win = False
     game_over = False
@@ -37,8 +38,6 @@ def play():
         print ("end of game. You win")
     else:
         print ("end of game. You lost")
-
-    file.close()
 
 
 if __name__ == "__main__":
