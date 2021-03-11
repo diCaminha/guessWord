@@ -1,21 +1,11 @@
 import random
 
-
 def play():
+    print_intro()
 
-    file = open("bucket_words.txt", "r")
-    words = []
-    for row in file:
-        words.append(row.strip())
+    secret_word = build_secret_word()
 
-    file.close()
-
-    print(words)
-
-    position = random.randrange(0, len(words))
-    secret_word = words[position].upper()
     status = ["_" for i in secret_word]
-
     win = False
     game_over = False
     turn = 0
@@ -39,6 +29,24 @@ def play():
     else:
         print ("end of game. You lost")
 
+
+def build_secret_word():
+    file = open("bucket_words.txt", "r")
+    words = []
+    for row in file:
+        words.append(row.strip())
+
+    file.close()
+
+    position = random.randrange(0, len(words))
+    secret_word = words[position].upper()
+
+    return secret_word
+
+def print_intro():
+    print("###################################")
+    print("##### GAME GUESS THE WORD #########")
+    print("###################################")
 
 if __name__ == "__main__":
     play()
